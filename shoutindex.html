@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>ChatApp Demo No. 1</title>
+         <link href="bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+
+        
+        <!-- styles needed by jScrollPane -->
+
+
+        <!-- latest jQuery direct from google's CDN -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <!-- form validation plugin -->
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+        <!-- shout global for POST stuff -->
+        <script  src="shoutglobal.js"></script>
+
+        <!-- short validation script -->
+        <script type="text/javascript">
+            $(document).ready(function() {
+
+            $('#viewShouts').load("getdata.php");
+              $("#formvalidate").validate({ // check for empty fields
+                rules: {
+                  username: {required: true},
+                  message: {required: true}
+                }
+              });
+            });
+        </script>
+        
+        <!-- to initialize javascript scroll pane onto page -->
+
+    </head>
+    <body>
+        <div class="container">
+
+            <!-- Creates a scroll pane for chats to load -->
+            <div class="form-frame">
+            <h1>Welcome to Chatapp!</h1>
+            <div id="viewShouts" class="scroll-pane"></div>
+
+            
+            <!-- User form -->
+            <form id="formvalidate" method='post'>
+            <input type="text" id="myUsername" class="form-control" name="username" placeholder="Name" value="" maxlength="15" />
+            <input type="text" id="myMessage" class="form-control" name="message" placeholder="Message" value="" maxlength="100" />
+            <button id="chatSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Submit!</button>
+            <button class="btn btn-lg btn-primary btn-block" type="reset">Clear!</button>
+            </form>
+        </div>
+
+            
+    </body>
+</html>
